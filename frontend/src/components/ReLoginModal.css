@@ -1,0 +1,65 @@
+.relogin-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 24px;
+  backdrop-filter: blur(2px);
+}
+
+.relogin-modal {
+  width: 100%;
+  max-width: 360px;
+  padding: 28px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: relogin-slide-up 0.2s ease-out;
+}
+
+@keyframes relogin-slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.relogin-header h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin: 0;
+}
+
+.relogin-header p {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin: 4px 0 0;
+}
+
+.relogin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.relogin-error {
+  padding: 8px 12px;
+  background: #fff5f5;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: #dc2626;
+}
+
+.relogin-dismiss {
+  background: none;
+  border: none;
+  color: var(--gray-500);
+  font-size: 13px;
+  text-align: center;
+  padding: 4px;
+  cursor: pointer;
+}
+.relogin-dismiss:hover { color: var(--gray-700); }

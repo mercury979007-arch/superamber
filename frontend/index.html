@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN" class="amber-font-loading">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Amber is here!</title>
+    <link rel="preload" href="/fonts/SmileySans-UI-Critical.woff2?v=20260906" as="font" type="font/woff2" crossorigin="anonymous" fetchpriority="high" />
+    <link rel="preload" href="/fonts/SmileySans-Oblique.ttf.woff2?v=20260906" as="font" type="font/woff2" crossorigin="anonymous" fetchpriority="high" />
+    <link id="appFavicon" rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  </head>
+  <body>
+    <div id="root">
+      <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#fffaf2,#fff);padding:24px;box-sizing:border-box;">
+        <div style="width:min(440px,100%);border:1px solid rgba(221,217,208,.7);border-radius:20px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.05);padding:28px;text-align:center;">
+          <div id="bootIcon" style="font-size:34px;margin-bottom:8px;">🌿</div>
+          <div id="bootTitle" style="font-size:20px;font-weight:700;margin-bottom:6px;">Super Amber is here!</div>
+          <div id="bootSubtitle" style="color:#777;font-size:14px;">正在准备字体和界面...</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function() {
+        var path = window.location.pathname.replace(/\/+$/, '') || '/';
+        var isSummerCamp = /^\/(?:summer-camp|camp)(?:\/|$)/.test(path);
+        if (!isSummerCamp) return;
+        document.title = '2026 Summer Camp';
+        var icon = document.getElementById('bootIcon');
+        var title = document.getElementById('bootTitle');
+        var subtitle = document.getElementById('bootSubtitle');
+        var favicon = document.getElementById('appFavicon');
+        if (icon) icon.textContent = '🏎';
+        if (title) title.textContent = '2026 Summer Camp';
+        if (subtitle) subtitle.textContent = '正在载入夏令营页面...';
+        if (favicon) favicon.setAttribute('href', "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎</text></svg>");
+      })();
+    </script>
+    <script>
+      (function() {
+        var script = document.querySelector('script[type="module"][src]');
+        var src = script && script.getAttribute('src') || '';
+        var match = src.match(/(?:index|main)-([^.]+)\.js(?:$|\?)/);
+        if (match && match[1]) {
+          window.__AMBER_PAGE_BUILD__ = match[1];
+          return;
+        }
+        if (/\/src\/main\.tsx(?:$|\?)/.test(src)) {
+          window.__AMBER_PAGE_BUILD__ = 'dev';
+        }
+      })();
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "environment": "test",
+  "commit": "04254967654c1484ebb0e3c406c262a10c73d8ff",
+  "commitShort": "04254967654c",
+  "sourceBranch": "hotfix/seating-backup-recovery-prod",
+  "deployedAt": "2026-07-26T12:39:05Z"
+}

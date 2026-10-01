@@ -1,0 +1,720 @@
+@font-face {
+  font-family: "DeYiHei Camp";
+  src: url("/fonts/SmileySans-Oblique.ttf.woff2?v=20260906") format("woff2");
+  font-weight: 400 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+.camp-schedule-wrap {
+  --schedule-page: #eef6e9;
+  --schedule-surface: #ffffff;
+  --schedule-soft: #f8fbef;
+  --schedule-ink: #17201d;
+  --schedule-muted: #66716b;
+  --schedule-line: rgba(23, 32, 29, 0.13);
+  --schedule-track: #163722;
+  --schedule-yellow: #ffe45a;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+  padding: 34px 24px 64px;
+  font-family: var(--camp-base-font, "DeYiHei Camp", "得意黑", "Smiley Sans", "PingFang SC", "Microsoft YaHei", sans-serif);
+  color: var(--schedule-ink);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 238, 0.92) 0%, rgba(239, 248, 228, 0.94) 52%, rgba(248, 251, 242, 0.98) 100%),
+    repeating-linear-gradient(90deg, rgba(67, 167, 88, 0.045) 0 1px, transparent 1px 48px),
+    repeating-linear-gradient(0deg, rgba(23, 32, 29, 0.035) 0 1px, transparent 1px 48px),
+    var(--schedule-page);
+}
+
+.camp-schedule-wrap::before,
+.camp-schedule-wrap::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.camp-schedule-wrap::before {
+  inset: 0;
+  background:
+    linear-gradient(128deg, transparent 0 58%, rgba(22, 55, 34, 0.08) 58% 59.2%, transparent 59.2% 100%),
+    linear-gradient(132deg, transparent 0 62%, rgba(255, 228, 90, 0.28) 62% 63%, transparent 63% 100%);
+}
+
+.camp-schedule-wrap::after {
+  top: 86px;
+  right: -90px;
+  width: 520px;
+  height: 108px;
+  opacity: 0.055;
+  transform: rotate(-6deg);
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.9) 50%, rgba(255, 255, 255, 0.96) 50%) 0 0 / 44px 44px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.96) 50%, rgba(0, 0, 0, 0.9) 50%) 22px 22px / 44px 44px;
+}
+
+.camp-schedule-back {
+  z-index: 60;
+}
+
+.camp-schedule-shell {
+  position: relative;
+  z-index: 1;
+  width: min(1500px, 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+}
+
+.camp-schedule-head {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(390px, 0.52fr);
+  gap: 20px;
+  align-items: center;
+  overflow: hidden;
+  min-height: 186px;
+  padding: 26px 28px;
+  border: 1px solid color-mix(in srgb, var(--camp-accent) 28%, rgba(255, 255, 255, 0.8));
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 254, 235, 0.94) 46%, color-mix(in srgb, var(--camp-accent-soft) 42%, #ffffff) 100%);
+  box-shadow:
+    0 20px 55px rgba(22, 55, 34, 0.10),
+    inset 0 -8px 0 rgba(255, 228, 90, 0.24);
+}
+
+.camp-schedule-head::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 18px;
+  background:
+    repeating-linear-gradient(90deg, rgba(22, 55, 34, 0.14) 0 24px, rgba(255, 255, 255, 0.34) 24px 48px);
+  z-index: 0;
+}
+
+.camp-schedule-head::after {
+  content: "START";
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  color: rgba(22, 55, 34, 0.12);
+  font-size: 78px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: 0;
+  transform: rotate(-4deg);
+  z-index: 0;
+}
+
+.camp-schedule-head > * {
+  position: relative;
+  z-index: 1;
+}
+
+.camp-schedule-kicker,
+.camp-side-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--camp-accent) 22%, #ffffff);
+  background: color-mix(in srgb, var(--camp-accent-soft) 42%, #ffffff);
+  color: var(--camp-accent-strong);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.camp-schedule-head h1 {
+  margin: 12px 0 8px;
+  color: var(--schedule-ink);
+  font-size: 58px;
+  line-height: 1.04;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.camp-schedule-head p,
+.camp-muted-copy {
+  margin: 0;
+  color: var(--schedule-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.camp-schedule-controls {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--camp-accent) 28%, var(--schedule-line));
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 14px 32px rgba(22, 55, 34, 0.08);
+}
+
+.camp-schedule-controls label {
+  display: grid;
+  gap: 6px;
+}
+
+.camp-schedule-controls label span {
+  color: color-mix(in srgb, var(--camp-accent-strong) 76%, var(--schedule-ink));
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.camp-schedule-controls select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 32px 0 10px;
+  border: 1px solid color-mix(in srgb, var(--camp-accent) 28%, var(--schedule-line));
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--schedule-ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.camp-schedule-view-toggle {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.camp-schedule-view-toggle button,
+.camp-side-actions button {
+  min-height: 40px;
+  border: 1px solid var(--schedule-line);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--schedule-ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.camp-schedule-view-toggle button.active,
+.camp-side-actions .camp-side-primary {
+  border-color: color-mix(in srgb, var(--camp-accent) 32%, transparent);
+  background: linear-gradient(135deg, #17201d, color-mix(in srgb, var(--camp-accent-strong) 52%, #17201d));
+  color: #ffffff;
+}
+
+.camp-schedule-layout {
+  display: grid;
+  grid-template-columns: minmax(760px, 1fr) minmax(300px, 360px);
+  gap: 20px;
+  align-items: start;
+}
+
+.camp-day-card,
+.camp-side-panel {
+  border: 1px solid color-mix(in srgb, var(--camp-accent) 18%, var(--schedule-line));
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 242, 0.98));
+  box-shadow: 0 22px 58px rgba(22, 55, 34, 0.10);
+}
+
+.camp-day-card {
+  position: relative;
+  overflow: hidden;
+  border-width: 10px;
+  border-color: color-mix(in srgb, var(--camp-module-cool, #d8f5b3) 68%, #ffffff);
+}
+
+.camp-day-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--camp-accent) 22%, transparent);
+  z-index: 2;
+}
+
+.camp-day-top {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 26px 22px;
+  border-bottom: 1px solid var(--schedule-line);
+  background:
+    linear-gradient(135deg, #ffffff 0%, #fffef1 52%, color-mix(in srgb, var(--camp-accent-soft) 42%, #ffffff) 100%);
+}
+
+.camp-day-top::after {
+  content: "";
+  position: absolute;
+  right: 22px;
+  bottom: 12px;
+  width: 220px;
+  height: 10px;
+  opacity: 0.38;
+  background:
+    repeating-linear-gradient(90deg, var(--schedule-track) 0 24px, transparent 24px 36px),
+    linear-gradient(var(--schedule-yellow), var(--schedule-yellow));
+  background-size: auto, 100% 3px;
+  background-position: 0 0, 0 50%;
+  background-repeat: repeat, no-repeat;
+}
+
+.camp-day-top span,
+.camp-day-room small {
+  color: var(--camp-accent-strong);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.camp-day-top h2 {
+  margin: 8px 0 0;
+  color: var(--schedule-ink);
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.camp-day-room {
+  display: grid;
+  place-content: center;
+  min-width: 160px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--camp-highlight) 38%, rgba(255, 255, 255, 0.2));
+  background:
+    linear-gradient(135deg, #161d1a, color-mix(in srgb, var(--camp-accent-strong) 34%, #222a26)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0 10px, transparent 10px 20px);
+  color: #ffffff;
+}
+
+.camp-day-room small {
+  color: color-mix(in srgb, #ffffff 78%, transparent);
+}
+
+.camp-day-room strong {
+  margin-top: 4px;
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.camp-day-date-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 26px;
+  border-bottom: 1px solid var(--schedule-line);
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.88), color-mix(in srgb, var(--camp-accent-soft) 20%, #ffffff));
+}
+
+.camp-day-date-line strong {
+  font-size: 16px;
+}
+
+.camp-day-date-line span {
+  color: var(--schedule-muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.camp-timeline {
+  display: grid;
+  position: relative;
+}
+
+.camp-timeline::before {
+  content: "";
+  position: absolute;
+  left: 145px;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: linear-gradient(180deg, var(--schedule-yellow), color-mix(in srgb, var(--camp-accent) 60%, var(--schedule-yellow)));
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.camp-timeline-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 154px minmax(0, 1fr);
+  min-height: 84px;
+  border-bottom: 1px solid var(--schedule-line);
+}
+
+.camp-timeline-row::before {
+  content: "";
+  position: absolute;
+  left: 138px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  background: var(--camp-accent-strong);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--camp-accent) 16%, transparent);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.camp-timeline-row:last-child {
+  border-bottom: 0;
+}
+
+.camp-time-block {
+  display: grid;
+  align-content: center;
+  gap: 5px;
+  padding: 14px 24px;
+  border-right: 1px solid var(--schedule-line);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 251, 242, 0.82));
+}
+
+.camp-time-block strong {
+  color: var(--schedule-ink);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.camp-time-block span {
+  color: var(--schedule-muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.camp-slot-card {
+  display: grid;
+  align-content: center;
+  gap: 7px;
+  padding: 16px 28px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.82));
+}
+
+.camp-timeline-row.is-activity .camp-slot-card {
+  background:
+    linear-gradient(90deg, color-mix(in srgb, #dff2d3 88%, #ffffff), color-mix(in srgb, var(--camp-accent-soft) 62%, #ffffff));
+  box-shadow: inset 7px 0 0 color-mix(in srgb, var(--camp-accent) 82%, #ffffff);
+}
+
+.camp-timeline-row.is-empty .camp-slot-card {
+  background:
+    linear-gradient(90deg, #fff1ec, #fffaf7);
+  box-shadow: inset 7px 0 0 #e56754;
+}
+
+.camp-timeline-row.is-break .camp-slot-card {
+  background:
+    linear-gradient(90deg, #f0f3ef, #ffffff);
+}
+
+.camp-timeline-row.is-lunch .camp-slot-card {
+  background:
+    linear-gradient(90deg, #fff2b8, #fff9df);
+  box-shadow: inset 7px 0 0 #e7bd32;
+}
+
+.camp-timeline-row.is-transition {
+  min-height: 54px;
+}
+
+.camp-timeline-row.is-transition .camp-slot-card {
+  background: #f7f8f7;
+}
+
+.camp-timeline-row.is-transition .camp-time-block {
+  background: rgba(255, 255, 255, 0.44);
+}
+
+.camp-slot-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.camp-slot-main strong,
+.camp-slot-card > strong {
+  color: var(--schedule-ink);
+  font-size: 22px;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+.camp-slot-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--camp-accent) 14%, #ffffff);
+  color: var(--camp-accent-strong);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.camp-slot-pill.danger {
+  background: #ffe3dc;
+  color: #a62514;
+}
+
+.camp-slot-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: color-mix(in srgb, var(--schedule-ink) 64%, #ffffff);
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 800;
+}
+
+.camp-slot-card > span {
+  color: var(--schedule-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 800;
+}
+
+.camp-schedule-side {
+  display: grid;
+  gap: 12px;
+  position: sticky;
+  top: 18px;
+  align-content: start;
+}
+
+.camp-side-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 254, 239, 0.92));
+}
+
+.camp-side-panel::after {
+  content: "";
+  position: absolute;
+  right: -44px;
+  bottom: -32px;
+  width: 150px;
+  height: 72px;
+  opacity: 0.06;
+  transform: rotate(-8deg);
+  background:
+    linear-gradient(90deg, #000 50%, #fff 50%) 0 0 / 24px 24px,
+    linear-gradient(90deg, #fff 50%, #000 50%) 12px 12px / 24px 24px;
+}
+
+.camp-side-panel h2 {
+  margin: 10px 0 12px;
+  color: var(--schedule-ink);
+  font-size: 26px;
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+.camp-side-actions {
+  display: grid;
+  gap: 10px;
+  border-color: color-mix(in srgb, var(--camp-accent) 34%, var(--schedule-line));
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--schedule-track) 94%, #ffffff), color-mix(in srgb, var(--camp-accent-strong) 62%, var(--schedule-track)));
+  color: #ffffff;
+}
+
+.camp-side-actions .camp-side-label {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.camp-side-actions h2 {
+  color: #ffffff;
+}
+
+.camp-side-actions button {
+  position: relative;
+  z-index: 1;
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.camp-side-actions .camp-side-primary {
+  background: #ffffff;
+  color: var(--schedule-track);
+}
+
+.camp-side-actions button:not(.camp-side-primary) {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.camp-activity-card,
+.camp-report-preview-card,
+.camp-empty-note {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--camp-accent) 26%, var(--schedule-line));
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--camp-accent-soft) 34%, #ffffff), #ffffff 74%);
+  box-shadow: inset 5px 0 0 color-mix(in srgb, var(--camp-accent) 62%, #ffffff);
+}
+
+.camp-activity-card + .camp-activity-card,
+.camp-report-preview-card + .camp-report-preview-card {
+  margin-top: 10px;
+}
+
+.camp-activity-card div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.camp-activity-card strong,
+.camp-report-preview-card strong,
+.camp-empty-note strong {
+  color: var(--schedule-ink);
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+.camp-activity-card span,
+.camp-report-preview-card span,
+.camp-empty-note span {
+  color: var(--camp-accent-strong);
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 900;
+}
+
+.camp-activity-card p,
+.camp-report-preview-card p {
+  margin: 0;
+  color: var(--schedule-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.camp-activity-card small {
+  color: color-mix(in srgb, var(--schedule-ink) 70%, #ffffff);
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 800;
+}
+
+.camp-empty-note {
+  margin-top: 12px;
+  background: #fff1ec;
+  border-color: #f3b7aa;
+}
+
+@media (max-width: 980px) {
+  .camp-schedule-head,
+  .camp-schedule-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .camp-schedule-head {
+    min-height: 0;
+  }
+
+  .camp-schedule-side {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .camp-schedule-wrap {
+    padding: 20px 12px 36px;
+  }
+
+  .camp-schedule-shell {
+    width: 100%;
+  }
+
+  .camp-schedule-head {
+    padding: 22px 16px 24px;
+    border-radius: 18px;
+  }
+
+  .camp-schedule-head::after {
+    top: 20px;
+    right: 12px;
+    font-size: 44px;
+  }
+
+  .camp-schedule-head h1 {
+    font-size: 38px;
+  }
+
+  .camp-schedule-controls {
+    grid-template-columns: 1fr;
+    border-radius: 14px;
+  }
+
+  .camp-day-top,
+  .camp-day-date-line {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .camp-day-room {
+    min-width: 0;
+  }
+
+  .camp-timeline-row {
+    grid-template-columns: 108px minmax(0, 1fr);
+  }
+
+  .camp-timeline::before {
+    left: 103px;
+  }
+
+  .camp-timeline-row::before {
+    left: 101px;
+    width: 14px;
+    height: 14px;
+  }
+
+  .camp-time-block,
+  .camp-slot-card {
+    padding: 12px;
+  }
+
+  .camp-slot-main strong,
+  .camp-slot-card > strong {
+    font-size: 20px;
+  }
+
+  .camp-slot-main {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

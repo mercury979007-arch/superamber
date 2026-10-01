@@ -1,0 +1,576 @@
+.review-shell {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.review-topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.review-title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.review-title strong {
+  font-size: 20px;
+  color: var(--gray-900);
+}
+
+.review-title span {
+  font-size: 13px;
+  color: var(--gray-500);
+}
+
+.review-summary {
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: linear-gradient(180deg, rgba(250,249,244,0.98), rgba(244,248,239,0.98));
+}
+
+.review-summary-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.review-kicker {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.review-summary h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.review-summary p {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--gray-600);
+}
+
+.review-summary-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 160px;
+}
+
+.review-summary-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.review-summary-pill {
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 12px;
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(215, 221, 208, 0.9);
+  color: var(--gray-600);
+}
+
+.review-summary-pill.is-risk {
+  color: #b34242;
+  background: rgba(251, 224, 224, 0.55);
+  border-color: rgba(210, 84, 84, 0.25);
+}
+
+.review-banner {
+  font-size: 13px;
+  color: var(--green-dark);
+  font-weight: 600;
+}
+
+.review-banner.is-error {
+  color: #c24d4d;
+}
+
+.review-class-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.review-class-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.review-class-card > summary {
+  list-style: none;
+}
+
+.review-class-card > summary::-webkit-details-marker {
+  display: none;
+}
+
+.review-class-summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  cursor: pointer;
+  background: #fff;
+}
+
+.review-class-card.is-risk .review-class-summary {
+  border-left: 4px solid #d15454;
+}
+
+.review-class-card.is-warning .review-class-summary {
+  border-left: 4px solid #d9a441;
+}
+
+.review-class-card.is-ok .review-class-summary {
+  border-left: 4px solid #7ba862;
+}
+
+.review-class-code {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gray-900);
+}
+
+.review-class-status-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 6px;
+}
+
+.review-class-actions {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.review-status-chip {
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  background: #f3f5ef;
+  color: var(--gray-600);
+}
+
+.review-status-chip.is-ok {
+  background: rgba(123, 168, 98, 0.12);
+  color: #4a7a33;
+}
+
+.review-status-chip.is-pending {
+  background: rgba(237, 234, 227, 0.88);
+  color: #8e7d63;
+}
+
+.review-status-chip.is-missing {
+  background: rgba(255, 243, 214, 0.88);
+  color: #9b6a16;
+}
+
+.review-status-chip.is-error {
+  background: rgba(251, 224, 224, 0.62);
+  color: #b34242;
+}
+
+.review-expand-hint {
+  font-size: 12px;
+  color: var(--gray-400);
+}
+
+.review-pill {
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.review-pill.is-risk {
+  background: rgba(210, 84, 84, 0.14);
+  color: #b34242;
+}
+
+.review-pill.is-warning {
+  background: rgba(217, 164, 65, 0.16);
+  color: #9b6a16;
+}
+
+.review-pill.is-ok {
+  background: rgba(123, 168, 98, 0.14);
+  color: #4a7a33;
+}
+
+.review-pill.is-pending {
+  background: rgba(237, 234, 227, 0.88);
+  color: #8e7d63;
+}
+
+.review-section-grid {
+  padding: 0 20px 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  background: #fcfcfa;
+}
+
+.review-section {
+  border: 1px solid rgba(223, 223, 216, 0.9);
+  border-radius: 16px;
+  background: #fff;
+  padding: 16px;
+}
+
+.review-section > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.review-section > summary::-webkit-details-marker {
+  display: none;
+}
+
+.review-section[open] {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.review-section-wide {
+  grid-column: 1 / -1;
+}
+
+.review-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.review-section-head h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.review-section-head span {
+  font-size: 12px;
+  color: var(--gray-500);
+}
+
+.review-field-table {
+  display: grid;
+  grid-template-columns: 108px 1fr 1fr 1.5fr;
+  gap: 8px 10px;
+  align-items: start;
+}
+
+.review-field-head {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.review-field-row {
+  display: contents;
+}
+
+.review-field-row > div {
+  min-height: 38px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #faf9f6;
+  font-size: 13px;
+}
+
+.review-field-row.is-warning > div {
+  background: rgba(251, 239, 212, 0.52);
+}
+
+.review-field-row.is-risk > div {
+  background: rgba(251, 224, 224, 0.62);
+}
+
+.review-field-label {
+  font-weight: 700;
+  color: var(--gray-700);
+}
+
+.review-final-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.review-choice-row,
+.review-date-actions,
+.review-module-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.review-choice {
+  border: 1px solid rgba(210, 215, 206, 0.9);
+  background: #fff;
+  color: var(--gray-600);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.review-choice:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.review-choice.active {
+  border-color: rgba(123, 168, 98, 0.65);
+  background: rgba(123, 168, 98, 0.12);
+  color: var(--green-dark);
+}
+
+.review-final-cell input,
+.review-date-actions input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(215, 215, 207, 0.95);
+  background: #fff;
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+.review-date-card {
+  border-radius: 14px;
+  padding: 14px;
+  background: #f8faf6;
+  border: 1px solid rgba(211, 224, 202, 0.92);
+}
+
+.review-date-card.is-warning {
+  background: rgba(251, 239, 212, 0.45);
+  border-color: rgba(217, 164, 65, 0.35);
+}
+
+.review-date-card.is-risk {
+  background: rgba(251, 224, 224, 0.52);
+  border-color: rgba(210, 84, 84, 0.28);
+}
+
+.review-date-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.review-date-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.78);
+  border-radius: 12px;
+}
+
+.review-date-grid strong {
+  font-size: 11px;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.review-date-grid span {
+  font-size: 13px;
+  color: var(--gray-700);
+}
+
+.review-issue-list {
+  margin: 12px 0;
+  padding-left: 18px;
+  color: var(--gray-700);
+  font-size: 13px;
+}
+
+.review-roster-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.review-roster-summary span {
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  background: #f5f6f1;
+  color: var(--gray-600);
+}
+
+.review-roster-explain {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--gray-600);
+}
+
+.review-roster-table {
+  display: grid;
+  grid-template-columns: 96px 1fr 1fr 1fr 1fr 220px 180px;
+  gap: 8px 10px;
+  align-items: start;
+}
+
+.review-roster-head {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.review-roster-row {
+  display: contents;
+}
+
+.review-roster-cell,
+.review-module-card {
+  border-radius: 14px;
+  padding: 12px;
+  background: #faf9f6;
+  border: 1px solid rgba(224, 223, 217, 0.92);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.review-module-card .review-pill {
+  width: fit-content;
+}
+
+.review-module-empty-action {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  font-size: 13px;
+  color: var(--gray-700);
+}
+
+.review-module-note {
+  font-size: 13px;
+  color: var(--gray-500);
+  line-height: 1.5;
+}
+
+.review-roster-row.is-fillable .review-roster-cell {
+  background: rgba(251, 239, 212, 0.42);
+}
+
+.review-roster-row.is-mismatch .review-roster-cell,
+.review-roster-row.is-standard-missing .review-roster-cell,
+.review-roster-row.is-current-missing-id .review-roster-cell,
+.review-roster-row.is-conflict .review-roster-cell {
+  background: rgba(251, 224, 224, 0.42);
+}
+
+.review-roster-id {
+  font-weight: 700;
+  color: var(--gray-700);
+}
+
+.review-roster-note {
+  font-size: 12px;
+  color: var(--gray-500);
+  line-height: 1.5;
+}
+
+.review-roster-draft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--gray-600);
+}
+
+.review-roster-draft strong {
+  font-size: 11px;
+  color: var(--gray-400);
+  text-transform: uppercase;
+}
+
+.review-roster-manual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.review-roster-manual input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(215, 215, 207, 0.95);
+  background: #fff;
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+.review-module-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 960px) {
+  .review-section-grid,
+  .review-module-grid,
+  .review-date-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .review-field-table {
+    grid-template-columns: 1fr;
+  }
+
+  .review-roster-table {
+    grid-template-columns: 1fr;
+  }
+
+  .review-field-head {
+    display: none;
+  }
+
+  .review-roster-head {
+    display: none;
+  }
+
+  .review-field-row > div {
+    min-height: auto;
+  }
+
+  .review-summary-head,
+  .review-class-summary,
+  .review-topbar {
+    flex-direction: column;
+  }
+
+  .review-summary-actions,
+  .review-class-actions {
+    width: 100%;
+  }
+}

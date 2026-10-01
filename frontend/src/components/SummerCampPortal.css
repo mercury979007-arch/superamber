@@ -1,0 +1,627 @@
+.summer-camp-wrap {
+  --portal-page: #f4f6f2;
+  --portal-surface: #ffffff;
+  --portal-surface-soft: #f7f8f4;
+  --portal-ink: #17201d;
+  --portal-muted: #66716b;
+  --portal-line: rgba(23, 32, 29, 0.12);
+  min-height: 100vh;
+  padding: 32px 20px 56px;
+  font-family: '得意黑', 'Smiley Sans', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(244, 246, 242, 0.94)),
+    linear-gradient(90deg, rgba(23, 32, 29, 0.045) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(23, 32, 29, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 12% 9%, color-mix(in srgb, var(--camp-highlight) 9%, transparent), transparent 25%),
+    radial-gradient(circle at 88% 14%, color-mix(in srgb, var(--camp-accent) 8%, transparent), transparent 28%),
+    var(--portal-page);
+  background-size: auto, 48px 48px, 48px 48px, auto, auto, auto;
+  color: var(--portal-ink);
+}
+
+.summer-camp-back {
+  z-index: 60;
+}
+
+.summer-camp-shell {
+  width: min(1220px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.summer-camp-hero,
+.summer-camp-selector,
+.summer-camp-config-wrap {
+  position: relative;
+}
+
+.summer-camp-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.84fr) minmax(520px, 1.16fr);
+  gap: 24px;
+  align-items: stretch;
+  min-height: 0;
+}
+
+.summer-camp-hero-copy,
+.summer-camp-stage,
+.summer-camp-select-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--portal-line);
+  border-radius: 8px;
+}
+
+.summer-camp-hero-copy {
+  padding: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 248, 244, 0.98)),
+    radial-gradient(circle at right top, color-mix(in srgb, var(--camp-highlight) 9%, transparent), transparent 30%);
+  box-shadow: 0 18px 42px rgba(23, 32, 29, 0.08);
+}
+
+.summer-camp-hero-copy::before,
+.summer-camp-select-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 6px;
+  background: linear-gradient(180deg, var(--camp-accent), var(--camp-highlight));
+  opacity: 0.74;
+}
+
+.summer-camp-kicker {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--camp-accent-soft) 42%, #ffffff);
+  border: 1px solid color-mix(in srgb, var(--camp-accent) 22%, #ffffff);
+  color: var(--camp-accent-strong);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.summer-camp-hero-copy h1 {
+  margin: 18px 0 12px;
+  font-size: clamp(44px, 5.8vw, 72px);
+  line-height: 1.02;
+  font-weight: 900;
+  letter-spacing: 0;
+  color: var(--portal-ink);
+  text-shadow: 0 3px 0 color-mix(in srgb, var(--camp-highlight) 26%, transparent);
+}
+
+.summer-camp-continue {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 4px;
+  align-items: start;
+  margin-top: 24px;
+  padding: 16px 18px;
+  width: min(340px, 100%);
+  border: 1px solid color-mix(in srgb, var(--camp-highlight) 38%, rgba(255, 255, 255, 0.2));
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, #161d1a, color-mix(in srgb, var(--camp-accent-strong) 34%, #222a26)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0 10px, transparent 10px 20px);
+  color: #ffffff;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 16px 34px rgba(23, 32, 29, 0.16);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.summer-camp-continue:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 42px rgba(23, 32, 29, 0.2);
+}
+
+.summer-camp-continue span,
+.summer-camp-continue small {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.summer-camp-continue strong {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+.summer-camp-continue small {
+  color: color-mix(in srgb, #ffffff 82%, transparent);
+}
+
+.summer-camp-quick-select {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--camp-accent) 18%, var(--portal-line));
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.summer-camp-quick-select label {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+
+.summer-camp-quick-select label span {
+  color: color-mix(in srgb, var(--camp-accent-strong) 76%, var(--portal-ink));
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.summer-camp-quick-select select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 36px 0 12px;
+  border: 1px solid color-mix(in srgb, var(--camp-accent) 28%, var(--portal-line));
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--portal-ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.summer-camp-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  gap: 24px;
+  align-items: center;
+  padding: 30px 30px 34px;
+  background:
+    linear-gradient(135deg, #ffffff 0%, #f8f9f5 54%, color-mix(in srgb, var(--camp-accent-soft) 18%, #ffffff) 100%);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--camp-highlight) 36%, #ffffff),
+    inset 0 0 0 10px rgba(255, 255, 255, 0.62),
+    0 24px 48px rgba(23, 32, 29, 0.1);
+}
+
+.summer-camp-stage::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid color-mix(in srgb, var(--camp-accent) 16%, transparent);
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.summer-camp-stage-stripe {
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  height: 18px;
+  border-radius: 999px;
+  opacity: 0.16;
+  background: repeating-linear-gradient(90deg, #17201d 0 18px, var(--camp-highlight) 18px 36px);
+}
+
+.summer-camp-stage-stripe-top {
+  top: 16px;
+}
+
+.summer-camp-stage-stripe-bottom {
+  bottom: 16px;
+}
+
+.summer-camp-stage-current {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(168px, 198px) minmax(180px, 1fr);
+  gap: 24px;
+  align-items: center;
+  min-height: 244px;
+  padding: 26px 24px;
+  border: 1px solid color-mix(in srgb, var(--camp-accent) 24%, var(--camp-border));
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 18% 42%, color-mix(in srgb, var(--camp-accent) 13%, transparent), transparent 36%),
+    radial-gradient(circle at 92% 12%, color-mix(in srgb, var(--camp-highlight) 24%, transparent), transparent 30%),
+    linear-gradient(135deg, color-mix(in srgb, var(--camp-accent-soft) 58%, #ffffff), color-mix(in srgb, var(--camp-panel) 78%, #ffffff) 52%, color-mix(in srgb, var(--camp-highlight) 13%, #ffffff));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.78),
+    0 18px 34px color-mix(in srgb, var(--camp-accent) 12%, rgba(23, 32, 29, 0.08));
+}
+
+.summer-camp-stage-current::before {
+  content: "当前选择";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  min-height: 24px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--camp-accent-strong) 82%, #17201d);
+  color: #ffffff;
+  font-size: 10px;
+  line-height: 24px;
+  font-weight: 900;
+}
+
+.summer-camp-stage-logo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  max-width: 198px;
+  height: auto;
+  justify-self: center;
+  filter: drop-shadow(0 18px 26px rgba(23, 32, 29, 0.16));
+}
+
+.summer-camp-stage-copy-block {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.summer-camp-stage-code {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: #17201d;
+  color: color-mix(in srgb, var(--camp-panel) 88%, #ffffff);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.summer-camp-stage-minor {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  margin-left: 8px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--camp-highlight) 52%, #ffffff);
+  color: var(--portal-ink);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.summer-camp-stage-copy-block strong {
+  display: block;
+  margin-top: 12px;
+  font-size: clamp(30px, 3.5vw, 46px);
+  line-height: 1;
+  font-weight: 900;
+  color: var(--portal-ink);
+  overflow-wrap: anywhere;
+}
+
+.summer-camp-stage-copy-block p {
+  margin: 12px 0 0;
+  max-width: 420px;
+  color: var(--portal-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.summer-camp-stage-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.summer-camp-stage-action {
+  min-width: 0;
+  padding: 16px 18px;
+  border: 1px solid var(--portal-line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--portal-ink);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.summer-camp-stage-action:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--camp-accent) 34%, #ffffff);
+  box-shadow: 0 18px 32px rgba(23, 32, 29, 0.1);
+}
+
+.summer-camp-stage-action.primary {
+  background: linear-gradient(135deg, #17201d, color-mix(in srgb, var(--camp-accent-strong) 52%, #17201d));
+  border-color: color-mix(in srgb, var(--camp-accent) 32%, transparent);
+  color: #ffffff;
+}
+
+.summer-camp-stage-action span,
+.summer-camp-stage-action strong {
+  display: block;
+}
+
+.summer-camp-stage-action span {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.summer-camp-stage-action strong {
+  margin-top: 6px;
+  font-size: 19px;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+.summer-camp-selector {
+  padding: 0;
+}
+
+.summer-camp-selector-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.summer-camp-selector-head span {
+  display: block;
+  margin-bottom: 6px;
+  color: color-mix(in srgb, var(--camp-accent-strong) 70%, var(--portal-ink));
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.summer-camp-selector-head h2 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1;
+  font-weight: 900;
+  color: var(--portal-ink);
+}
+
+.summer-camp-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.summer-camp-select-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 340px;
+  padding: 18px;
+  background:
+    linear-gradient(180deg, #ffffff, #f8f9f5),
+    radial-gradient(circle at right top, color-mix(in srgb, var(--camp-highlight) 8%, transparent), transparent 28%);
+  color: var(--portal-ink);
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 18px 36px rgba(23, 32, 29, 0.07);
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.summer-camp-select-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--camp-accent) 42%, #ffffff);
+  box-shadow: 0 24px 42px rgba(23, 32, 29, 0.12);
+}
+
+.summer-camp-select-card.is-selected {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--camp-accent) 58%, #ffffff);
+  box-shadow:
+    0 28px 48px rgba(23, 32, 29, 0.14),
+    inset 0 0 0 2px color-mix(in srgb, var(--camp-highlight) 38%, #ffffff);
+}
+
+.summer-camp-select-card.is-selected::after {
+  content: "Selected";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: #17201d;
+  color: color-mix(in srgb, var(--camp-panel) 88%, #ffffff);
+  font-size: 10px;
+  line-height: 24px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.summer-camp-select-code {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--camp-highlight) 48%, #ffffff);
+  color: var(--portal-ink);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.summer-camp-select-logo-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 94px;
+  margin: 16px 0 14px;
+}
+
+.summer-camp-select-logo {
+  display: block;
+  width: 100%;
+  height: 76px;
+  max-width: 132px;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 12px 18px color-mix(in srgb, var(--camp-ink) 14%, transparent));
+}
+
+.summer-camp-select-copy strong {
+  display: block;
+  max-width: 100%;
+  font-size: clamp(17px, 1.35vw, 21px);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: 0;
+  white-space: nowrap;
+  color: var(--portal-ink);
+}
+
+.summer-camp-select-copy small {
+  display: block;
+  margin-top: 6px;
+  color: color-mix(in srgb, var(--camp-accent-strong) 70%, var(--portal-ink));
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: 800;
+}
+
+.summer-camp-select-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+.summer-camp-select-tags span {
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--portal-line);
+  color: color-mix(in srgb, var(--portal-ink) 78%, #ffffff);
+  font-size: 11px;
+  line-height: 24px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.summer-camp-config-wrap {
+  padding-top: 86px;
+}
+
+@media (max-width: 1200px) {
+  .summer-camp-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .summer-camp-stage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .summer-camp-stage-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .summer-camp-stage-action {
+    flex: 1 1 220px;
+  }
+
+  .summer-camp-selector-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .summer-camp-wrap {
+    padding: 22px 14px 40px;
+  }
+
+  .summer-camp-shell {
+    gap: 22px;
+  }
+
+  .summer-camp-selector-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .summer-camp-stage {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .summer-camp-stage-current {
+    width: 100%;
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .summer-camp-stage-logo {
+    max-width: 190px;
+  }
+
+  .summer-camp-stage-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .summer-camp-stage-action {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .summer-camp-hero-copy,
+  .summer-camp-stage,
+  .summer-camp-select-card {
+    padding: 18px;
+  }
+
+  .summer-camp-hero-copy h1 {
+    font-size: 42px;
+  }
+
+  .summer-camp-stage-current {
+    padding: 22px;
+  }
+
+  .summer-camp-selector-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .summer-camp-selector-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summer-camp-select-card {
+    min-height: 280px;
+  }
+
+  .summer-camp-continue {
+    width: 100%;
+  }
+
+  .summer-camp-quick-select {
+    grid-template-columns: 1fr;
+  }
+}

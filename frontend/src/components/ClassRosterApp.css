@@ -1,0 +1,205 @@
+.roster-shell {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 24px 20px 52px;
+}
+
+.roster-topbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.roster-title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.roster-title strong {
+  font-size: 24px;
+  color: var(--gray-900);
+}
+
+.roster-title span {
+  font-size: 13px;
+  color: var(--gray-500);
+}
+
+.roster-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 420px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.roster-panel {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.roster-panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.roster-panel-head h3 {
+  font-size: 18px;
+  color: var(--green-dark);
+}
+
+.roster-panel-head p {
+  font-size: 12px;
+  color: var(--gray-500);
+  text-align: right;
+}
+
+.roster-import-actions,
+.roster-class-switch,
+.roster-footer,
+.roster-quick-paste {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.roster-textarea,
+.roster-quick-paste textarea,
+.roster-table input,
+.roster-class-switch select {
+  width: 100%;
+  border: 1px solid rgba(123, 168, 98, 0.22);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.roster-textarea,
+.roster-quick-paste textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.roster-notice {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(240, 246, 232, 0.9);
+  border: 1px solid rgba(123, 168, 98, 0.2);
+  color: var(--green-dark);
+  font-size: 12px;
+}
+
+.roster-batch-list {
+  display: grid;
+  gap: 10px;
+}
+
+.roster-batch-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(253, 252, 249, 0.9);
+  border: 1px solid rgba(123, 168, 98, 0.18);
+}
+
+.roster-batch-card strong {
+  font-size: 15px;
+  color: var(--gray-800);
+}
+
+.roster-batch-card p,
+.roster-empty,
+.roster-footer span {
+  font-size: 12px;
+  color: var(--gray-500);
+}
+
+.roster-empty {
+  padding: 18px;
+  border-radius: 12px;
+  background: var(--gray-100);
+  text-align: center;
+}
+
+.roster-class-switch select {
+  max-width: 220px;
+}
+
+.roster-quick-paste textarea {
+  min-height: 90px;
+}
+
+.roster-quick-paste button {
+  align-self: flex-start;
+}
+
+.roster-table {
+  display: grid;
+  grid-template-columns: 140px 1fr 1fr 92px;
+  gap: 8px;
+  align-items: center;
+}
+
+.roster-head {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray-600);
+  padding: 0 2px;
+}
+
+.roster-row {
+  display: contents;
+}
+
+.roster-footer {
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid var(--gray-200);
+}
+
+@media (max-width: 980px) {
+  .roster-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .roster-shell {
+    padding: 20px 16px 40px;
+  }
+
+  .roster-topbar,
+  .roster-panel-head,
+  .roster-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .roster-table {
+    grid-template-columns: 1fr;
+  }
+
+  .roster-head {
+    display: none;
+  }
+
+  .roster-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 12px;
+    background: rgba(253, 252, 249, 0.9);
+    border: 1px solid rgba(123, 168, 98, 0.18);
+  }
+}

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Super Amber · 新版使用说明</title>
+  <style>
+    @font-face {
+      font-family: "SmileySans";
+      src: url("/fonts/SmileySans-Oblique.ttf.woff2?v=20260906") format("woff2");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "SmileySans", -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", sans-serif;
+      background: #f7faf2;
+      color: #2d3a2e;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .hero {
+      background: linear-gradient(135deg, #e8f3df 0%, #f0f6e8 48%, #e3eef8 100%);
+      padding: 40px 24px 32px;
+      text-align: center;
+      border-bottom: 1px solid #d6e8c8;
+    }
+
+    .hero-emoji {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #3a5a2a;
+    }
+
+    .hero .tagline {
+      font-size: 13px;
+      color: #5a8a42;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .hero .promo {
+      max-width: 680px;
+      margin: 16px auto 0;
+      font-size: 13px;
+      color: #4a5e4a;
+      background: rgba(255, 255, 255, 0.72);
+      border-radius: 10px;
+      padding: 14px 18px;
+      text-align: left;
+      border: 1px solid #c8ddb8;
+    }
+
+    .hero .promo p + p { margin-top: 8px; }
+
+    .hero-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid #c8ddb8;
+      background: rgba(255, 255, 255, 0.82);
+      font-size: 12px;
+      color: #4a6a3a;
+      font-weight: 600;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 28px 20px 60px;
+    }
+
+    .section-header {
+      font-size: 11px;
+      font-weight: 600;
+      color: #7ba862;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .step {
+      background: #fff;
+      border: 1px solid #deecd0;
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(90, 138, 66, 0.06);
+    }
+
+    .step-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .step-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #7ba862;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #2d4a1e;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: #607060;
+      margin-bottom: 14px;
+    }
+
+    .mock {
+      background: #fafcf8;
+      border: 1.5px solid #d0e4c0;
+      border-radius: 10px;
+      padding: 16px;
+      font-size: 12px;
+      color: #3a4a3a;
+    }
+
+    .mock-title {
+      font-size: 10px;
+      font-weight: 600;
+      color: #9ab88a;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .mock-card {
+      background: #fff;
+      border: 1px solid #e0ecd8;
+      border-radius: 9px;
+      padding: 14px;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    .mock-kicker {
+      font-size: 10px;
+      color: #8aa87a;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .mock-list,
+    .mock-module-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mock-row,
+    .mock-module {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1.5px solid #d0e4c0;
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+
+    .mock-row.active,
+    .mock-module.required {
+      border-color: #7ba862;
+      background: #f2f9ec;
+    }
+
+    .mock-icon {
+      width: 18px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .mock-row-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mock-row-title,
+    .mock-module-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #355126;
+    }
+
+    .mock-row-sub {
+      font-size: 10px;
+      color: #7a9a6a;
+      margin-top: 1px;
+    }
+
+    .mock-tag,
+    .mock-module-tag {
+      margin-left: auto;
+      font-size: 9px;
+      color: #5a8a42;
+      background: #e0f0d0;
+      border-radius: 3px;
+      padding: 1px 5px;
+      flex-shrink: 0;
+    }
+
+    .mock-class-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .mock-class-card {
+      border: 1.5px solid #c8ddb8;
+      border-radius: 9px;
+      padding: 10px 8px;
+      text-align: center;
+      background: #f7faf2;
+    }
+
+    .mock-class-card.active {
+      border-color: #7ba862;
+      background: #f2f9ec;
+    }
+
+    .mock-class-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #3a5a2a;
+    }
+
+    .mock-class-action {
+      font-size: 10px;
+      color: #7ba862;
+      margin-top: 3px;
+    }
+
+    .mock-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .mock-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid #c8ddb8;
+      background: #fff;
+      color: #5a7a42;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .mock-pill.active {
+      background: #7ba862;
+      border-color: #7ba862;
+      color: #fff;
+    }
+
+    .mock-upload-zone {
+      border: 2px dashed #b0d0a0;
+      border-radius: 9px;
+      padding: 14px;
+      text-align: center;
+      color: #7a9a6a;
+      font-size: 12px;
+      background: #f7faf2;
+      margin-bottom: 8px;
+    }
+
+    .mock-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+    }
+
+    .mock-table th {
+      background: #e8f3df;
+      color: #4a6a3a;
+      padding: 6px 8px;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 1px solid #c8ddb8;
+    }
+
+    .mock-table td {
+      padding: 6px 8px;
+      border-bottom: 1px solid #eff5e8;
+      color: #3a4a3a;
+    }
+
+    .mock-table tr:last-child td { border-bottom: none; }
+
+    .mock-export-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .mock-export-btn {
+      flex: 1;
+      padding: 9px;
+      border-radius: 7px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .mock-export-btn.green {
+      background: #7ba862;
+      color: #fff;
+    }
+
+    .mock-export-btn.outline {
+      border: 1.5px solid #7ba862;
+      color: #5a7a42;
+      background: #f2f9ec;
+    }
+
+    .callout {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-top: 12px;
+      background: #fffbe8;
+      border: 1px solid #e8d878;
+      border-radius: 7px;
+      padding: 9px 12px;
+      font-size: 12px;
+      color: #5a4a20;
+    }
+
+    .callout-icon {
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .step-connector {
+      text-align: center;
+      color: #a8c898;
+      font-size: 18px;
+      margin: -6px 0;
+    }
+
+    .tip-box {
+      background: #f0f6e8;
+      border: 1px solid #c8ddb8;
+      border-radius: 9px;
+      padding: 14px 18px;
+      font-size: 13px;
+      color: #4a6a3a;
+      margin-top: 24px;
+    }
+
+    .tip-box strong { color: #3a5a2a; }
+
+    @media (max-width: 520px) {
+      .mock-class-grid { grid-template-columns: 1fr; }
+      .mock-export-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero"><div class="hero-emoji">✨</div><h1>Super Amber 新版使用说明</h1><div class="tagline">选好班级，直接开始 · 2026 年 9 月更新</div><div class="promo"><p>班级日报、每日开口、班级概览集中在首页，常用工具带着当前班级直接进入。</p></div></div>
+  <div class="content">
+    <div class="step" id="batch-import"><div class="step-head"><div class="step-num">1</div><div class="step-title">首页直接使用</div></div><div class="step-desc">常用工具为补课助手、座位表、MiniPin。选择当前班级后，座位表和 MiniPin会带着该班直接进入，工具内仍可换班。其他工具放在页面下方。首页自动显示默认班级日报，另有每日开口、班级概览两个平级页签。</div></div>
+    <div class="step" id="hub"><div class="step-head"><div class="step-num">2</div><div class="step-title">班级日报：先看默认版，再调整</div></div><div class="step-desc">进入时优先显示已有数据。系统按上一对应上课场次推荐挑战，同场次多轮可以合并；请核对挑战名称，需要时单选或多选纠正。修改挑战与规则只会保留为草稿，点击“确认制作日报”才统一更新一次，设置区随即折叠成一行。</div></div>
+    <div class="step" id="step-2"><div class="step-head"><div class="step-num">3</div><div class="step-title">两块统计与奖励逻辑</div></div><div class="step-desc">落实数据：选择标准版、明细版或大龄版，设置 AI 语音及测试基准，快捷调整全部完成奖励；展开可编辑自定义逐项规则。每日开口：一个开关控制展示与奖励，默认上周一至周日，可改日期、达标天数和每天奖励；展开可配置连续奖励。整套设置可保存为当前班级模板，或设为班主任通用模板。</div></div>
+    <div class="step" id="step-3"><div class="step-head"><div class="step-num">4</div><div class="step-title">确认奖励，再导出分享</div></div><div class="step-desc">学生表直接展示 MiniP 数额及简短获得原因。核对人数与总额后，从设置条发放 MiniP；生成日报本身不会自动发放。编辑日报可排序、隐藏列和移除本次学生行，不会删除学生中心资料。图片同时尝试下载和复制，Excel 包含日报与奖励明细，文件名带班级、日期及时间。班主任质量分析单独显示，不进入家长图片。</div></div>
+    <div class="step" id="step-4"><div class="step-head"><div class="step-num">5</div><div class="step-title">每日开口与班级概览</div></div><div class="step-desc">每日开口页签保留开口榜单及发放流程。班级概览从逐班查看开始，显示每班实际统计的挑战，点击挑战名称可以切换。无挑战时保持中性空状态，不把全班计作未完成。</div></div>
+    <div class="step" id="modules"><div class="step-head"><div class="step-num">6</div><div class="step-title">座位轮转、补课与使用说明</div></div><div class="step-desc">座位表批量周轮转放在常用工具下方，支持撤回上次轮转；补课助手用于匹配时间与生成通知。首页下方保留待办、班级查找和新版说明。MiniPin 页面新增“回收”：选择学生、填写数量和原因，核对实时余额与确认单后再提交；结果不确定时先核对，不重复点击。已有数据会优先加载，需要最新数据时点“刷新今日数据”；登录失效时按提示重新登录。</div></div>
+  </div>
+</body>
+</html>

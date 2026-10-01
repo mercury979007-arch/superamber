@@ -1,0 +1,352 @@
+{
+  "schemaVersion": 1,
+  "capabilities": [
+    {
+      "id": "agent-bounded-permission-reads",
+      "file": "backend/lib/agentPermissionRead.js",
+      "contains": [
+        "SOURCE_PERMISSION_TIMEOUT",
+        "controller.abort(error)",
+        "inFlight.delete(scraper)",
+        "Promise.all"
+      ]
+    },
+    {
+      "id": "agent-fresh-permission-exchange",
+      "file": "backend/routes/classroomAgentRoutes.js",
+      "contains": [
+        "await freshAgentPermissions(granted.session.scraper)",
+        "sessions.get(granted.sid)!==granted.session",
+        "Server-Timing"
+      ]
+    },
+    {
+      "id": "agent-authorization-scraper-path",
+      "file": "backend/scraper/scraper.js",
+      "contains": [
+        "options.authorization",
+        "readAgentPermissionMap(this,options.signal)"
+      ]
+    },
+    {
+      "id": "seating-45",
+      "file": "frontend/src/seating/state.ts",
+      "contains": [
+        "MAX_STUDENT_LIMIT = 45"
+      ]
+    },
+    {
+      "id": "seating-layout-memory",
+      "file": "frontend/src/seating/layoutIdentity.ts",
+      "contains": [
+        "layoutPositionId"
+      ]
+    },
+    {
+      "id": "seating-native-export",
+      "file": "frontend/src/seating/exportHelpers.ts",
+      "contains": [
+        "exportRatio = '16:9'"
+      ]
+    },
+    {
+      "id": "speaking-week-words",
+      "file": "frontend/src/components/SpeakingChallengeApp.tsx",
+      "contains": [
+        "本周总词数",
+        "settlementDatesInRange",
+        "words-desc"
+      ]
+    },
+    {
+      "id": "speaking-word-source",
+      "file": "backend/server.js",
+      "contains": [
+        "createReadingWordsService",
+        "readingWordsService,"
+      ]
+    },
+    {
+      "id": "verified-usage",
+      "file": "backend/lib/usageAnalytics.js",
+      "contains": [
+        "verifiedTeacherKeys",
+        "normalizeTeacherKey"
+      ]
+    },
+    {
+      "id": "agent-frame-recovery",
+      "file": "frontend/src/components/ClassroomAgentApp.tsx",
+      "contains": [
+        "superamber-agent-auth-required",
+        "event.source !== frameRef.current?.contentWindow"
+      ]
+    },
+    {
+      "id": "agent-durable-grants",
+      "file": "backend/routes/classroomAgentRoutes.js",
+      "contains": [
+        "/classroom-agent/read-grant/exchange",
+        "await persistSessions()"
+      ]
+    },
+    {
+      "id": "storage-quota-protection",
+      "file": "frontend/src/utils/appPersistence.ts",
+      "contains": [
+        "function saveAppCacheValue",
+        "state.classes.map(compactClass)"
+      ]
+    },
+    {
+      "id": "minipin-no-automatic-resend",
+      "file": "backend/scraper/scraper.js",
+      "contains": [
+        "Stop after the confirmed attempt"
+      ],
+      "excludes": [
+        "const sendAttempts = ["
+      ]
+    },
+    {
+      "id": "minipin-pending-choices",
+      "file": "backend/routes/speakingChallengeRoutes.js",
+      "contains": [
+        "MAX_AUTOMATIC_ISSUE_ATTEMPTS = 1",
+        "deferredRewardDates"
+      ]
+    },
+    {
+      "id": "report-separate-export",
+      "file": "frontend/src/components/ClassDailyReportHome.tsx",
+      "contains": [
+        "../utils/reportExportHelpers"
+      ]
+    },
+    {
+      "id": "makeup-shared-current-schedules",
+      "file": "frontend/src/utils/scheduleRecommendations.mjs",
+      "contains": [
+        "recommendScheduleMakeup"
+      ]
+    },
+    {
+      "id": "makeup-preserve-other-stages",
+      "file": "frontend/src/utils/makeupData.ts",
+      "contains": [
+        "loadMultiStageStore().stages"
+      ]
+    },
+    {
+      "id": "database-primary-fallback",
+      "file": "backend/server.js",
+      "contains": [
+        "createPublicitySourceService",
+        "runtimeFactory: getDatabaseRuntime",
+        "fetchRosterWithSource",
+        "fetchCheckinRowsWithSource",
+        "fetchSpeakingChallengeWithSource"
+      ]
+    },
+    {
+      "id": "temporary-video-task-exclusion",
+      "file": "backend/lib/videoTaskPolicy.js",
+      "contains": [
+        "SUPERAMBER_IGNORE_VIDEO_TASKS",
+        "filterVideoTaskSnapshot",
+        "VIDEO_TASKS_IGNORED"
+      ]
+    },
+    {
+      "id": "home-reward-live-balance",
+      "file": "frontend/src/components/ClassDailyReportHome.tsx",
+      "contains": [
+        "fetchDistributionBalance(refs)",
+        "issueInFlight",
+        "retryIssueBalance",
+        "已重新查询"
+      ]
+    },
+    {
+      "id": "legacy-class-publicity",
+      "file": "frontend/src/components/ClassHub.tsx",
+      "contains": [
+        "title: '班级公示'",
+        "target: 'daily-report'"
+      ]
+    },
+    {
+      "id": "speaking-date-range-report",
+      "file": "frontend/src/components/SpeakingChallengeApp.tsx",
+      "contains": [
+        "按日期生成",
+        "恢复本周",
+        "speakingStudentInRange",
+        "统计范围"
+      ]
+    },
+    {
+      "id": "qualified-english-names",
+      "file": "backend/lib/studentNames.js",
+      "contains": [
+        "normalizeEnglishName",
+        "englishNameOrPlaceholder",
+        "Script=Latin"
+      ]
+    },
+    {
+      "id": "weekly-sunday-generation-gate",
+      "file": "frontend/src/hooks/useWelcomePageState.ts",
+      "contains": [
+        "weeklyRotationAvailability(rotationPlan.targetWeek)",
+        "rotationAvailability.allowed"
+      ]
+    },
+    {
+      "id": "home-update-dialog-and-top-tools",
+      "file": "frontend/src/components/Welcome.tsx",
+      "contains": [
+        "welcome-update-dialog",
+        "onShowUpdates",
+        "superamber:open-feedback"
+      ]
+    },
+    {
+      "id": "daily-report-per-item-open-settings",
+      "file": "frontend/src/components/ClassDailyReportHome.tsx",
+      "contains": [
+        "<option value=\"scheme1\">逐项发放</option>",
+        "收起设置 ↑",
+        "reportPosterRef.current?.scrollIntoView",
+        "setBasicDetailsOpen] = useState(true)"
+      ]
+    },
+    {
+      "id": "direct-layout-switch-and-export-progress",
+      "file": "frontend/src/seating/app.ts",
+      "contains": [
+        "seatingExportBusy",
+        "点击直接切换并保存",
+        "previewManualLayout(order["
+      ]
+    },
+    {
+      "id": "layout-identity-expanded-capacity",
+      "file": "frontend/src/seating/layoutIdentity.ts",
+      "contains": [
+        "getLayoutGroupSeatCapacity(targetLayout, identity.students.length, groupCount)",
+        "deepCopy(mode.rowGroups || makeEmptyRowGroups())"
+      ]
+    },
+    {
+      "id": "six-group-cross-cycle",
+      "file": "frontend/src/seating/layouts.ts",
+      "contains": [
+        "const path = [0, 4, 2, 3, 1, 5]",
+        "orderCircularEntries"
+      ]
+    },
+    {
+      "id": "feedback-inbox-and-digest",
+      "file": "backend/server.js",
+      "contains": [
+        "createUserFeedbackRoutes",
+        "user-feedback-${APP_ENV}"
+      ]
+    },
+    {
+      "id": "report-itemized-award-explanation",
+      "file": "frontend/src/components/ClassDailyReportHome.tsx",
+      "contains": [
+        "MiniP 逐项核算明细",
+        "reportRewardDetails(student, explanationScheme)",
+        "日报设置"
+      ]
+    },
+    {
+      "id": "seating-fixed-169-canvas",
+      "file": "frontend/src/seating/exportHelpers.ts",
+      "contains": [
+        "clone.dataset.fixedBoard = '1'",
+        "? 1600 :",
+        "? 900 :"
+      ]
+    },
+    {
+      "id": "seating-balanced-default-imports",
+      "file": "frontend/src/seating/layoutOperations.ts",
+      "contains": [
+        "groups: convertStudentsToCircular(normalized, groupCount)",
+        "rowGroups: convertStudentsToRows(normalized, groupCount)",
+        "fourGroups: convertStudentsToFour(normalized, 4)"
+      ]
+    },
+    {
+      "id": "seating-balanced-first-projection",
+      "file": "frontend/src/seating/layoutIdentity.ts",
+      "contains": [
+        "Math.max(...counts) - Math.min(...counts) <= 1"
+      ]
+    },
+    {
+      "id": "seating-bounded-board-and-notes",
+      "file": "frontend/src/seating/render.ts",
+      "contains": [
+        "'--seat-height'",
+        "'--row-seat-count'"
+      ]
+    },
+    {
+      "id": "task-scoped-seating-renderer",
+      "file": "backend/services/seatingImageRenderer.js",
+      "contains": [
+        "new ScraperBrowserRuntime",
+        "setJavaScriptEnabled(false)",
+        "runtime.run('seating-export'"
+      ]
+    },
+    {
+      "id": "private-apis-production-gate",
+      "file": "backend/server.js",
+      "contains": [
+        "app.use(TEST_ONLY_ROUTES, createTestOnlyMiddleware(APP_ENV, {",
+        "if (!requireLoggedInSession(req, res)) return;",
+        "createSeatingImageRenderer()"
+      ]
+    },
+    {
+      "id": "shared-locked-runtime-release",
+      "file": "scripts/deploy-runtime.sh",
+      "contains": [
+        "sync_runtime_release()",
+        "npm ci --prefix",
+        "--exclude 'data/'"
+      ]
+    },
+    {
+      "id": "seating-local-storage-single-copy",
+      "file": "frontend/src/seating/storage.ts",
+      "contains": [
+        "export function migrateSeatingStorage()",
+        "return saveClassData(data)"
+      ]
+    },
+    {
+      "id": "seating-preserve-legacy-under-quota",
+      "file": "frontend/src/seating/appMeta.ts",
+      "contains": [
+        "alreadyContainedInCurrent(current, legacy)",
+        "clearRefetchableCaches()",
+        "window.localStorage.getItem(spec.current) !== value"
+      ]
+    },
+    {
+      "id": "seating-weekday-catch-up",
+      "file": "frontend/src/utils/weeklyRotationAvailability.ts",
+      "contains": [
+        "targetWeek <= currentWeek ||",
+        "targetWeek === currentWeek + 1"
+      ]
+    }
+  ]
+}

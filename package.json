@@ -1,0 +1,13 @@
+{
+  "name": "superamber-core",
+  "private": true,
+  "version": "1.1.0",
+  "scripts": {
+    "install:all": "PUPPETEER_SKIP_DOWNLOAD=true npm --prefix backend ci --include=dev && npm --prefix frontend ci --include=dev",
+    "test": "npm --prefix backend test && npm --prefix frontend test",
+    "build": "npm --prefix frontend run build",
+    "verify": "npm test && npm run build && npm run check:public",
+    "check:public": "node scripts/check-public-release.mjs"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,34 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const os = require('node:os');
+const path = require('node:path');
+const { spawnSync } = require('node:child_process');
+
+test('shared deployment retains runtime data/assets, installs the new lockfile and stops on install failure', t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'superamber-deploy-test-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const write = (file, value) => { fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, value); };
+  const source = path.join(root, 'candidate'), target = path.join(root, 'runtime'), bin = path.join(root, 'bin');
+  write(path.join(source, 'backend/package-lock.json'), '{"version":"next"}');
+  write(path.join(source, 'server.js'), 'new code');
+  write(path.join(source, 'data/teacher.json'), 'forbidden overwrite');
+  write(path.join(target, 'data/teacher.json'), 'original teacher data');
+  write(path.join(target, 'obsolete.js'), 'old code');
+  write(path.join(target, 'frontend/dist/assets/old-loaded.js'), 'loaded in browser');
+  write(path.join(target, 'backend/node_modules/existing/index.js'), 'existing dependency');
+  write(path.join(bin, 'npm'), `#!/bin/sh\n[ "$1" = ci ] && [ "$2" = --prefix ] || exit 2\n[ "$INSTALL_FAIL" != 1 ] || exit 7\ncp "$3/package-lock.json" "$3/installed-lock.json"\n`);
+  fs.chmodSync(path.join(bin, 'npm'), 0o755);
+  const helper = path.resolve(__dirname, '../../scripts/deploy-runtime.sh');
+  const run = fail => spawnSync('bash', ['-e', '-c', 'source "$1"; sync_runtime_release "$2" "$3"; touch "$3/ready"', 'test', helper, source, target], { env: { ...process.env, PATH: bin + path.delimiter + process.env.PATH, INSTALL_FAIL: fail ? '1' : '0' }, encoding: 'utf8' });
+  const success = run(false);
+  assert.equal(success.status, 0, success.stderr);
+  assert.equal(fs.readFileSync(path.join(target, 'data/teacher.json'), 'utf8'), 'original teacher data');
+  assert(fs.existsSync(path.join(target, 'frontend/dist/assets/old-loaded.js')));
+  assert(fs.existsSync(path.join(target, 'backend/node_modules/existing/index.js')));
+  assert.equal(fs.existsSync(path.join(target, 'obsolete.js')), false);
+  assert.equal(fs.readFileSync(path.join(target, 'backend/installed-lock.json'), 'utf8'), '{"version":"next"}');
+  fs.unlinkSync(path.join(target, 'ready'));
+  assert.equal(run(true).status, 7);
+  assert.equal(fs.existsSync(path.join(target, 'ready')), false);
+});

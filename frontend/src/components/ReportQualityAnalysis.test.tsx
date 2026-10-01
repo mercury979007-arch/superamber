@@ -1,0 +1,23 @@
+import React from 'react';
+import { createRoot, type Root } from 'react-dom/client';
+import { flushSync } from 'react-dom';
+import { afterEach, expect, it } from 'vitest';
+import ReportQualityAnalysis from './ReportQualityAnalysis';
+let root: Root;
+afterEach(() => { root?.unmount(); document.body.innerHTML = ''; });
+it('keeps 24 students out of the compact tier bar and progressively expands the full analysis', () => {
+  const names = Array.from({ length: 24 }, (_, index) => `Student ${index + 1}`);
+  const container = document.createElement('div'); document.body.append(container); root = createRoot(container);
+  flushSync(() => root.render(<ReportQualityAnalysis tiers={{ A: [], B: [], C: [], D: names }} visibleNames={new Set(names)} students={names.map((name, index) => ({ studentId: String(index), englishName: name, chineseName: '中文名', diagnosis: '挑战尚未完成；AI语音需跟进' }))}/>));
+  const click = (text: string) => flushSync(() => [...container.querySelectorAll('button')].find(button => button.textContent?.includes(text))!.click());
+  expect(container.querySelectorAll('.report-coach-followup-list details')).toHaveLength(6);
+  expect(container.querySelectorAll('.report-coach-tier-bar button:disabled')).toHaveLength(3);
+  expect(container.querySelector('.report-coach-tier-bar')?.textContent).not.toContain('Student');
+  click('D 类');
+  expect(container.querySelectorAll('.report-coach-name-list span')).toHaveLength(24);
+  click('查看全部 24 人');
+  expect(container.querySelectorAll('.report-coach-followup-list details')).toHaveLength(24);
+  click('收起名单');
+  expect(container.querySelectorAll('.report-coach-followup-list details')).toHaveLength(6);
+  expect(container.textContent).toContain('挑战尚未完成；AI语音需跟进');
+});

@@ -1,0 +1,66 @@
+/* One editor owns date selection and MiniPin settings; the board stays a preview. */
+.speaking-controls { display: block; padding: 22px; border: 1px solid #dce6d4; border-radius: 18px; background: #f9fbf4; }
+.speaking-controls-heading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.speaking-controls-heading > div:first-child { display: grid; gap: 4px; }
+.speaking-controls-heading span { font-size: 14px; color: #849175; }
+.speaking-controls-heading strong { font-size: 24px; font-weight: 400; color: #3e5d34; }
+.speaking-controls-meta { display: flex; align-items: center; gap: 12px; }
+.speaking-controls-meta small { font-size: 14px; color: #859079; }
+.speaking-controls-meta button { padding: 7px 12px; border: 1px solid #d6e1ca; border-radius: 9px; background: #fffef9; color: #66894e; font-size: 16px; }
+.speaking-controls-overview { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 18px 0; }
+.speaking-controls-overview > div { display: grid; align-content: start; gap: 6px; padding: 16px; border: 1px solid #e3e8db; border-radius: 12px; background: #fffef9; }
+.speaking-controls-overview > div > span { font-size: 16px; color: #829072; }
+.speaking-controls-overview > div > strong { font-size: 23px; font-weight: 400; color: #3c5433; }
+.speaking-controls-overview > div > small { font-size: 14px; line-height: 1.6; color: #87917e; }
+.speaking-controls-actions { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.speaking-controls-actions > button { min-height: 48px; padding: 10px 22px; border-radius: 11px; font-size: 20px; }
+.speaking-controls-edit { border: 1px solid #d5bd76; background: #fff3cd; color: #80652e; }
+.speaking-controls-actions > .speaking-challenge__preview-button { flex: 0 1 240px; margin: 0; grid-column: auto; }
+.speaking-controls-editor { margin-top: 20px; padding-top: 18px; border-top: 1px solid #dbe4d1; }
+.speaking-controls-editor-title { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; margin-bottom: 16px; }
+.speaking-controls-editor-title strong { font-size: 22px; font-weight: 400; color: #466138; }
+.speaking-controls-editor-title small { font-size: 14px; color: #87917e; }
+.speaking-controls-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 16px; }
+.speaking-controls-editor .speaking-challenge__rule-card { padding: 16px; justify-content: flex-start; }
+.speaking-controls-editor .speaking-challenge__rule-card > header strong { font-size: 21px; font-weight: 400; }
+.speaking-controls-editor .speaking-challenge__rule-card > header small { font-size: 14px; line-height: 1.6; }
+.speaking-controls-editor :is(input, select, button) { font-size: 16px; }
+.speaking-controls-editor .speaking-challenge__date-range { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.speaking-controls-editor .speaking-challenge__date-range label { min-width: 0; font-size: 15px; }
+.speaking-controls-editor .speaking-challenge__date-range input { width: 100%; min-width: 0; min-height: 42px; font-size: 16px; }
+.speaking-controls-editor .speaking-challenge__date-range button { padding: 10px; min-height: 42px; white-space: normal; }
+.speaking-controls-editor .speaking-challenge__date-chips { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; }
+.speaking-controls-editor .speaking-challenge__date-chips label { min-width: 0; padding-inline: 2px; }
+.speaking-controls-editor .speaking-challenge__date-chips label > span { font-size: 18px; }
+.speaking-controls-editor .speaking-challenge__date-chips small { font-size: 12px; }
+.speaking-controls-editor .speaking-challenge__range-hint { font-size: 14px; line-height: 1.6; }
+.speaking-controls-editor .speaking-challenge__base-reward { display: grid; gap: 8px; margin: 10px 0 18px; font-size: 16px; }
+.speaking-controls-editor .speaking-challenge__base-reward-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.speaking-controls-editor .speaking-challenge__reward-stepper { display: flex; min-height: 42px; }
+.speaking-controls-editor .speaking-challenge__reward-stepper input { width: 66px; min-height: 42px; text-align: center; font-size: 20px; border: 0; border-radius: 0; background: #fff; color: #46633b; }
+.speaking-controls-editor .speaking-challenge__reward-stepper button { min-width: 34px; border: 0; background: #edf4e4; color: #6f934e; }
+.speaking-controls-editor .speaking-challenge__streak-only { min-height: 40px; }
+.speaking-controls-subheading { font-size: 18px; font-weight: 400; color: #547744; margin: 0 0 10px; }
+.speaking-controls-editor .speaking-challenge__advanced-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.speaking-controls-editor .speaking-challenge__advanced-grid label > span { font-size: 14px; }
+.speaking-controls-editor .speaking-challenge__advanced-grid input { width: 70px; min-width: 0; min-height: 40px; }
+.speaking-controls-editor .speaking-challenge__reward-mode { min-width: 0; }
+.speaking-controls-editor .speaking-challenge__reward-mode button { padding: 8px; font-size: 14px; }
+.speaking-controls-editor .speaking-challenge__supplement-policy { margin-top: 16px; flex-wrap: wrap; }
+.speaking-controls-editor .speaking-challenge__supplement-policy strong { font-size: 16px; }
+.speaking-controls-editor .speaking-challenge__supplement-policy small { font-size: 13px; }
+.speaking-controls-editor .speaking-challenge__date-rate-summary { margin: 14px 0 0; }
+.speaking-controls-editor .speaking-challenge__rule-summary { margin-top: 16px; }
+.speaking-display-settings { position: relative; font-size: 16px; }
+.speaking-display-settings > summary { cursor: pointer; padding: 9px 13px; background: #fffef9; border: 1px solid #dce5d3; border-radius: 10px; color: #708b5c; }
+.speaking-display-settings > div { position: absolute; top: calc(100% + 8px); left: 0; z-index: 10; display: grid; gap: 12px; width: 260px; padding: 16px; background: #fff; border: 1px solid #dce5d3; border-radius: 12px; box-shadow: 0 8px 20px #354d2420; }
+@media (max-width: 1200px) { .speaking-controls-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) {
+  .speaking-controls { display: block; padding: 14px; }
+  .speaking-controls-overview { gap: 8px; }
+  .speaking-controls-overview > div { padding: 11px; }
+  .speaking-controls-overview > div > strong { font-size: 19px; overflow-wrap: anywhere; }
+  .speaking-controls-actions > button { flex: 1 1 100%; }
+  .speaking-controls-actions > .speaking-challenge__preview-button { flex-basis: 100%; }
+  .speaking-controls-meta { flex-wrap: wrap; }
+}

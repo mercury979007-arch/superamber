@@ -1,0 +1,256 @@
+.summer-theme-manager {
+  --theme-card-bg: color-mix(in srgb, var(--camp-panel) 72%, #ffffff);
+  display: grid;
+  gap: 18px;
+  padding: 22px;
+  border: 1px solid color-mix(in srgb, var(--camp-border) 80%, #ffffff);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--camp-paper) 88%, #ffffff), color-mix(in srgb, var(--camp-panel) 92%, #ffffff));
+  color: var(--camp-ink);
+  box-shadow: 0 14px 30px rgba(23, 63, 50, 0.08);
+}
+
+.summer-theme-manager.is-compact {
+  padding: 16px;
+  box-shadow: none;
+}
+
+.summer-theme-manager-head,
+.summer-theme-actions,
+.summer-theme-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.summer-theme-manager-head h2 {
+  margin: 5px 0 6px;
+  color: var(--camp-ink);
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.05;
+}
+
+.summer-theme-manager-head p {
+  max-width: 620px;
+  margin: 0;
+  color: color-mix(in srgb, var(--camp-ink) 68%, #ffffff);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.summer-theme-eyebrow,
+.summer-theme-count {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--camp-accent) 14%, #ffffff);
+  color: var(--camp-accent-strong);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.summer-theme-field,
+.summer-theme-upload {
+  display: grid;
+  gap: 6px;
+  min-width: 190px;
+  color: color-mix(in srgb, var(--camp-ink) 78%, #ffffff);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.summer-theme-field select,
+.summer-theme-upload input {
+  min-height: 38px;
+  border: 1px solid color-mix(in srgb, var(--camp-border) 86%, #ffffff);
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--camp-ink);
+  font: inherit;
+  font-weight: 700;
+}
+
+.summer-theme-field select {
+  padding: 0 10px;
+}
+
+.summer-theme-upload input {
+  padding: 7px 10px;
+}
+
+.summer-theme-button {
+  min-height: 38px;
+  border: 1px solid color-mix(in srgb, var(--camp-border) 82%, #ffffff);
+  border-radius: 6px;
+  padding: 0 13px;
+  background: color-mix(in srgb, var(--camp-panel) 88%, #ffffff);
+  color: var(--camp-ink);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.summer-theme-button.primary {
+  border-color: var(--camp-accent-strong);
+  background: var(--camp-accent);
+  color: #ffffff;
+}
+
+.summer-theme-body {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.9fr) minmax(320px, 1.4fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.summer-theme-preview {
+  display: grid;
+  grid-template-columns: 118px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.summer-theme-image {
+  display: grid;
+  place-items: center;
+  min-height: 118px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--camp-border) 82%, #ffffff);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--camp-accent-soft) 70%, #ffffff);
+}
+
+.summer-theme-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.summer-theme-image span {
+  color: color-mix(in srgb, var(--camp-ink) 55%, #ffffff);
+  font-size: 13px;
+}
+
+.summer-theme-card {
+  display: grid;
+  gap: 10px;
+  align-content: center;
+  min-height: 118px;
+  border: 1px solid color-mix(in srgb, var(--camp-border) 80%, #ffffff);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--theme-card-bg);
+}
+
+.summer-theme-card span {
+  color: var(--camp-accent-strong);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.summer-theme-card strong {
+  color: var(--camp-ink);
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.summer-theme-card div {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.summer-theme-card em {
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 7px 10px;
+  color: var(--camp-ink);
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.summer-theme-card .warm {
+  border-color: var(--camp-module-warm-border);
+  background: var(--camp-module-warm);
+}
+
+.summer-theme-card .cool {
+  border-color: var(--camp-module-cool-border);
+  background: var(--camp-module-cool);
+}
+
+.summer-theme-color-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.summer-theme-color-field {
+  display: grid;
+  grid-template-columns: minmax(72px, 1fr) 36px auto;
+  gap: 8px;
+  align-items: center;
+  min-height: 42px;
+  border: 1px solid color-mix(in srgb, var(--camp-border) 78%, #ffffff);
+  border-radius: 6px;
+  padding: 7px 9px;
+  background: color-mix(in srgb, var(--camp-panel) 82%, #ffffff);
+}
+
+.summer-theme-color-field span {
+  color: color-mix(in srgb, var(--camp-ink) 82%, #ffffff);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.summer-theme-color-field input {
+  width: 34px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.summer-theme-color-field code {
+  color: color-mix(in srgb, var(--camp-ink) 62%, #ffffff);
+  font-size: 11px;
+}
+
+.summer-theme-actions {
+  justify-content: flex-end;
+}
+
+.summer-theme-actions > span {
+  margin-right: auto;
+  color: color-mix(in srgb, var(--camp-ink) 70%, #ffffff);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.summer-theme-notice {
+  border: 1px solid color-mix(in srgb, var(--camp-accent) 26%, #ffffff);
+  border-radius: 6px;
+  padding: 10px 12px;
+  background: color-mix(in srgb, var(--camp-accent-soft) 80%, #ffffff);
+  color: var(--camp-accent-strong);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+@media (max-width: 820px) {
+  .summer-theme-body,
+  .summer-theme-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .summer-theme-color-grid {
+    grid-template-columns: 1fr;
+  }
+}
