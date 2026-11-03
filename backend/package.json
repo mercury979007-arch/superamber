@@ -14,7 +14,7 @@
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "mysql2": "^3.24.3",
-    "puppeteer": "^24.37.5",
+    "puppeteer": "^25.16.0",
     "xlsx": "^0.18.5"
   },
   "license": "MIT"
